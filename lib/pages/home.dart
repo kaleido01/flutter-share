@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
       print("Error signing for: $err");
     });
 
-    // ReAuthenticate user when app is ppened
+    // ReAuthenticate user when app is opened
     googleSignIn.signInSilently(suppressErrors: false).then((account) {
       handleSignIn(account);
     }).catchError((err) {
@@ -71,7 +71,11 @@ class _HomeState extends State<Home> {
   }
 
   void onTap(int pageIndex) {
-    pageController.jumpToPage(pageIndex);
+    pageController.animateToPage(
+      pageIndex,
+      curve: Curves.easeInOut,
+      duration: Duration(milliseconds: 300),
+    );
   }
 
   Scaffold buildAuthScreen() {
